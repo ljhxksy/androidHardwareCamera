@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -7,7 +9,12 @@ android {
     namespace = "com.example.androidhardwarecamera"
     compileSdk = 34
 
+    buildFeatures {
+        compose = true
+        viewBinding = true
+    }
     defaultConfig {
+
         applicationId = "com.example.androidhardwarecamera"
         minSdk = 24
         targetSdk = 34
@@ -19,6 +26,7 @@ android {
             useSupportLibrary = true
         }
     }
+
 
     buildTypes {
         release {
@@ -48,7 +56,15 @@ android {
         }
     }
 }
-
+dependencies {
+    implementation(libs.play.services.mlkit.barcode.scanning)
+    implementation(libs.androidx.camera.core.v110)
+    implementation(libs.androidx.camera.camera2)
+    implementation(libs.androidx.camera.lifecycle.v110)
+    implementation(libs.androidx.camera.view.v110)
+    implementation(libs.barcode.scanning)
+    implementation(libs.androidx.camera.view.v100alpha28)
+}
 dependencies {
 
     implementation(libs.androidx.core.ktx)
@@ -59,6 +75,15 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.camera.core)
+    implementation(libs.androidx.camera.view)
+    implementation(libs.androidx.camera.lifecycle)
+    implementation(libs.vision.common)
+    implementation(libs.play.services.mlkit.barcode.scanning)
+    implementation(libs.play.services.vision)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.material)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
